@@ -1,11 +1,9 @@
 from selenium import webdriver
-from fixture.group import GroupHelper
-from fixture.contact import ContactHelper
 from fixture.session import SessionHelper
 
 
 class Application:
-    def __init__(self, browser, baseUrl, username, password):
+    def __init__(self, browser, baseUrl):
         if browser == "firefox":
             self.wd = webdriver.Firefox()
         elif browser == "chrome":
@@ -15,11 +13,7 @@ class Application:
         else:
             raise ValueError("Unrecognizer browser %s" % browser)
         self.session = SessionHelper(self)
-        self.group = GroupHelper(self)
-        self.contact = ContactHelper(self)
         self.baseUrl = baseUrl
-        self.username =username
-        self.password = password
 
     def is_valid(self):
         try:
