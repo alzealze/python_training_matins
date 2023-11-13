@@ -1,4 +1,6 @@
 from selenium import webdriver
+
+from fixture.project import ProjectHelper
 from fixture.session import SessionHelper
 
 
@@ -14,6 +16,7 @@ class Application:
             raise ValueError("Unrecognizer browser %s" % browser)
         self.session = SessionHelper(self)
         self.baseUrl = baseUrl
+        self.project = ProjectHelper(self)
 
     def is_valid(self):
         try:
