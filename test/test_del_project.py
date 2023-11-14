@@ -5,7 +5,6 @@ from model.project import Project
 
 
 def test_del_project(app):
-    app.session.login("administrator", "root")
     if len(app.project.get_project_list()) == 1:
         project = random.choice(string.ascii_letters)
         app.project.create_project(project)
